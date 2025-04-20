@@ -1,6 +1,6 @@
 {
   "ref_country_codes" : [
-{
+    {
       "country" : "Albania",
       "alpha2" : "AL",
       "alpha3" : "ALB",
@@ -8,7 +8,7 @@
       "latitude" : 41,
       "longitude" : 20
     },
-{
+    {
       "country" : "Algeria",
       "alpha2" : "DZ",
       "alpha3" : "DZA",
@@ -16,7 +16,7 @@
       "latitude" : 28,
       "longitude" : 3
     },
-{
+    {
       "country" : "American Samoa",
       "alpha2" : "AS",
       "alpha3" : "ASM",
@@ -24,7 +24,7 @@
       "latitude" : -14.3333,
       "longitude" : -170
     },
-{
+    {
       "country" : "Andorra",
       "alpha2" : "AD",
       "alpha3" : "AND",
@@ -32,7 +32,7 @@
       "latitude" : 42.5,
       "longitude" : 1.6
     },
-{
+    {
       "country" : "Angola",
       "alpha2" : "AO",
       "alpha3" : "AGO",
@@ -40,7 +40,7 @@
       "latitude" : -12.5,
       "longitude" : 18.5
     },
-{
+    {
       "country" : "Anguilla",
       "alpha2" : "AI",
       "alpha3" : "AIA",
@@ -48,7 +48,7 @@
       "latitude" : 18.25,
       "longitude" : -63.1667
     },
-{
+    {
       "country" : "Antarctica",
       "alpha2" : "AQ",
       "alpha3" : "ATA",
@@ -56,7 +56,7 @@
       "latitude" : -90,
       "longitude" : 0
     },
-{
+    {
       "country" : "Antigua and Barbuda",
       "alpha2" : "AG",
       "alpha3" : "ATG",
@@ -64,7 +64,7 @@
       "latitude" : 17.05,
       "longitude" : -61.8
     },
-{
+    {
       "country" : "Argentina",
       "alpha2" : "AR",
       "alpha3" : "ARG",
@@ -72,7 +72,7 @@
       "latitude" : -34,
       "longitude" : -64
     },
-{
+    {
       "country" : "Armenia",
       "alpha2" : "AM",
       "alpha3" : "ARM",
@@ -80,7 +80,7 @@
       "latitude" : 40,
       "longitude" : 45
     },
-{
+    {
       "country" : "Aruba",
       "alpha2" : "AW",
       "alpha3" : "ABW",
@@ -88,7 +88,7 @@
       "latitude" : 12.5,
       "longitude" : -69.9667
     },
-{
+   {
       "country" : "Australia",
       "alpha2" : "AU",
       "alpha3" : "AUS",
@@ -96,7 +96,7 @@
       "latitude" : -27,
       "longitude" : 133
     },
-{
+    {
       "country" : "Austria",
       "alpha2" : "AT",
       "alpha3" : "AUT",
@@ -104,7 +104,7 @@
       "latitude" : 47.3333,
       "longitude" : 13.3333
     },
-{
+    {
       "country" : "Azerbaijan",
       "alpha2" : "AZ",
       "alpha3" : "AZE",
@@ -112,7 +112,7 @@
       "latitude" : 40.5,
       "longitude" : 47.5
     },
-{
+    {
       "country" : "Bahamas",
       "alpha2" : "BS",
       "alpha3" : "BHS",
@@ -120,7 +120,7 @@
       "latitude" : 24.25,
       "longitude" : -76
     },
-{
+    {
       "country" : "Bahrain",
       "alpha2" : "BH",
       "alpha3" : "BHR",
@@ -128,7 +128,7 @@
       "latitude" : 26,
       "longitude" : 50.55
     },
-{
+    {
       "country" : "Bangladesh",
       "alpha2" : "BD",
       "alpha3" : "BGD",
@@ -136,7 +136,7 @@
       "latitude" : 24,
       "longitude" : 90
     },
-{
+    {
       "country" : "Barbados",
       "alpha2" : "BB",
       "alpha3" : "BRB",
@@ -144,7 +144,7 @@
       "latitude" : 13.1667,
       "longitude" : -59.5333
     },
-{
+    {
       "country" : "Belarus",
       "alpha2" : "BY",
       "alpha3" : "BLR",
@@ -152,7 +152,7 @@
       "latitude" : 53,
       "longitude" : 28
     },
-{
+    {
       "country" : "Belgium",
       "alpha2" : "BE",
       "alpha3" : "BEL",
@@ -160,7 +160,7 @@
       "latitude" : 50.8333,
       "longitude" : 4
     },
-{
+    {
       "country" : "Belize",
       "alpha2" : "BZ",
       "alpha3" : "BLZ",
@@ -168,7 +168,7 @@
       "latitude" : 17.25,
       "longitude" : -88.75
     },
-{
+    {
       "country" : "Benin",
       "alpha2" : "BJ",
       "alpha3" : "BEN",
@@ -176,7 +176,7 @@
       "latitude" : 9.5,
       "longitude" : 2.25
     },
-{
+    {
       "country" : "Bermuda",
       "alpha2" : "BM",
       "alpha3" : "BMU",
@@ -184,7 +184,7 @@
       "latitude" : 32.3333,
       "longitude" : -64.75
     },
-{
+    {
       "country" : "Bhutan",
       "alpha2" : "BT",
       "alpha3" : "BTN",
@@ -192,7 +192,7 @@
       "latitude" : 27.5,
       "longitude" : 90.5
     },
-{
+    {
       "country" : "Bolivia, Plurinational State of",
       "alpha2" : "BO",
       "alpha3" : "BOL",
@@ -200,7 +200,7 @@
       "latitude" : -17,
       "longitude" : -65
     },
-{
+    {
       "country" : "Bosnia and Herzegovina",
       "alpha2" : "BA",
       "alpha3" : "BIH",
@@ -208,7 +208,7 @@
       "latitude" : 44,
       "longitude" : 18
     },
-{
+    {
       "country" : "Botswana",
       "alpha2" : "BW",
       "alpha3" : "BWA",
@@ -216,7 +216,7 @@
       "latitude" : -22,
       "longitude" : 24
     },
-{
+    {
       "country" : "Bouvet Island",
       "alpha2" : "BV",
       "alpha3" : "BVT",
@@ -224,7 +224,7 @@
       "latitude" : -54.4333,
       "longitude" : 3.4
     },
-{
+    {
       "country" : "Brazil",
       "alpha2" : "BR",
       "alpha3" : "BRA",
@@ -232,7 +232,7 @@
       "latitude" : -10,
       "longitude" : -55
     },
-{
+    {
       "country" : "British Indian Ocean Territory",
       "alpha2" : "IO",
       "alpha3" : "IOT",
@@ -240,7 +240,7 @@
       "latitude" : -6,
       "longitude" : 71.5
     },
-{
+    {
       "country" : "Brunei Darussalam",
       "alpha2" : "BN",
       "alpha3" : "BRN",
@@ -248,7 +248,7 @@
       "latitude" : 4.5,
       "longitude" : 114.6667
     },
-{
+    {
       "country" : "Bulgaria",
       "alpha2" : "BG",
       "alpha3" : "BGR",
@@ -256,7 +256,7 @@
       "latitude" : 43,
       "longitude" : 25
     },
-{
+    {
       "country" : "Burkina Faso",
       "alpha2" : "BF",
       "alpha3" : "BFA",
@@ -264,7 +264,7 @@
       "latitude" : 13,
       "longitude" : -2
     },
-{
+    {
       "country" : "Burundi",
       "alpha2" : "BI",
       "alpha3" : "BDI",
@@ -272,7 +272,7 @@
       "latitude" : -3.5,
       "longitude" : 30
     },
-{
+    {
       "country" : "Cambodia",
       "alpha2" : "KH",
       "alpha3" : "KHM",
@@ -280,7 +280,7 @@
       "latitude" : 13,
       "longitude" : 105
     },
-{
+    {
       "country" : "Cameroon",
       "alpha2" : "CM",
       "alpha3" : "CMR",
@@ -288,7 +288,7 @@
       "latitude" : 6,
       "longitude" : 12
     },
-{
+    {
       "country" : "Canada",
       "alpha2" : "CA",
       "alpha3" : "CAN",
@@ -296,7 +296,7 @@
       "latitude" : 60,
       "longitude" : -95
     },
-{
+    {
       "country" : "Cape Verde",
       "alpha2" : "CV",
       "alpha3" : "CPV",
@@ -304,7 +304,7 @@
       "latitude" : 16,
       "longitude" : -24
     },
-{
+    {
       "country" : "Cayman Islands",
       "alpha2" : "KY",
       "alpha3" : "CYM",
@@ -312,7 +312,7 @@
       "latitude" : 19.5,
       "longitude" : -80.5
     },
-{
+    {
       "country" : "Central African Republic",
       "alpha2" : "CF",
       "alpha3" : "CAF",
@@ -320,7 +320,7 @@
       "latitude" : 7,
       "longitude" : 21
     },
-{
+    {
       "country" : "Chad",
       "alpha2" : "TD",
       "alpha3" : "TCD",
@@ -328,7 +328,7 @@
       "latitude" : 15,
       "longitude" : 19
     },
-{
+    {
       "country" : "Chile",
       "alpha2" : "CL",
       "alpha3" : "CHL",
@@ -336,7 +336,7 @@
       "latitude" : -30,
       "longitude" : -71
     },
-{
+    {
       "country" : "China",
       "alpha2" : "CN",
       "alpha3" : "CHN",
@@ -344,7 +344,7 @@
       "latitude" : 35,
       "longitude" : 105
     },
-{
+    {
       "country" : "Christmas Island",
       "alpha2" : "CX",
       "alpha3" : "CXR",
@@ -352,7 +352,7 @@
       "latitude" : -10.5,
       "longitude" : 105.6667
     },
-{
+    {
       "country" : "Cocos (Keeling) Islands",
       "alpha2" : "CC",
       "alpha3" : "CCK",
@@ -360,7 +360,7 @@
       "latitude" : -12.5,
       "longitude" : 96.8333
     },
-{
+    {
       "country" : "Colombia",
       "alpha2" : "CO",
       "alpha3" : "COL",
@@ -368,7 +368,7 @@
       "latitude" : 4,
       "longitude" : -72
     },
-{
+    {
       "country" : "Comoros",
       "alpha2" : "KM",
       "alpha3" : "COM",
@@ -376,7 +376,7 @@
       "latitude" : -12.1667,
       "longitude" : 44.25
     },
-{
+    {
       "country" : "Congo",
       "alpha2" : "CG",
       "alpha3" : "COG",
@@ -384,7 +384,7 @@
       "latitude" : -1,
       "longitude" : 15
     },
-{
+    {
       "country" : "Congo, the Democratic Republic of the",
       "alpha2" : "CD",
       "alpha3" : "COD",
@@ -392,7 +392,7 @@
       "latitude" : 0,
       "longitude" : 25
     },
-{
+    {
       "country" : "Cook Islands",
       "alpha2" : "CK",
       "alpha3" : "COK",
@@ -400,7 +400,7 @@
       "latitude" : -21.2333,
       "longitude" : -159.7667
     },
-{
+    {
       "country" : "Costa Rica",
       "alpha2" : "CR",
       "alpha3" : "CRI",
@@ -408,7 +408,7 @@
       "latitude" : 10,
       "longitude" : -84
     },
-{
+    {
       "country" : "Côte d'Ivoire",
       "alpha2" : "CI",
       "alpha3" : "CIV",
@@ -416,7 +416,7 @@
       "latitude" : 8,
       "longitude" : -5
     },
-{
+    {
       "country" : "Croatia",
       "alpha2" : "HR",
       "alpha3" : "HRV",
@@ -424,7 +424,7 @@
       "latitude" : 45.1667,
       "longitude" : 15.5
     },
-{
+    {
       "country" : "Cuba",
       "alpha2" : "CU",
       "alpha3" : "CUB",
@@ -432,7 +432,7 @@
       "latitude" : 21.5,
       "longitude" : -80
     },
-{
+    {
       "country" : "Cyprus",
       "alpha2" : "CY",
       "alpha3" : "CYP",
@@ -440,7 +440,7 @@
       "latitude" : 35,
       "longitude" : 33
     },
-{
+    {
       "country" : "Czech Republic",
       "alpha2" : "CZ",
       "alpha3" : "CZE",
@@ -448,7 +448,7 @@
       "latitude" : 49.75,
       "longitude" : 15.5
     },
-{
+    {
       "country" : "Denmark",
       "alpha2" : "DK",
       "alpha3" : "DNK",
@@ -456,7 +456,7 @@
       "latitude" : 56,
       "longitude" : 10
     },
-{
+    {
       "country" : "Djibouti",
       "alpha2" : "DJ",
       "alpha3" : "DJI",
@@ -464,7 +464,7 @@
       "latitude" : 11.5,
       "longitude" : 43
     },
-{
+    {
       "country" : "Dominica",
       "alpha2" : "DM",
       "alpha3" : "DMA",
@@ -472,7 +472,7 @@
       "latitude" : 15.4167,
       "longitude" : -61.3333
     },
-{
+    {
       "country" : "Dominican Republic",
       "alpha2" : "DO",
       "alpha3" : "DOM",
@@ -480,7 +480,7 @@
       "latitude" : 19,
       "longitude" : -70.6667
     },
-{
+    {
       "country" : "Ecuador",
       "alpha2" : "EC",
       "alpha3" : "ECU",
@@ -488,7 +488,7 @@
       "latitude" : -2,
       "longitude" : -77.5
     },
-{
+    {
       "country" : "Egypt",
       "alpha2" : "EG",
       "alpha3" : "EGY",
@@ -496,7 +496,7 @@
       "latitude" : 27,
       "longitude" : 30
     },
-{
+    {
       "country" : "El Salvador",
       "alpha2" : "SV",
       "alpha3" : "SLV",
@@ -504,7 +504,7 @@
       "latitude" : 13.8333,
       "longitude" : -88.9167
     },
-{
+    {
       "country" : "Equatorial Guinea",
       "alpha2" : "GQ",
       "alpha3" : "GNQ",
@@ -512,7 +512,7 @@
       "latitude" : 2,
       "longitude" : 10
     },
-{
+    {
       "country" : "Eritrea",
       "alpha2" : "ER",
       "alpha3" : "ERI",
@@ -520,7 +520,7 @@
       "latitude" : 15,
       "longitude" : 39
     },
-{
+    {
       "country" : "Estonia",
       "alpha2" : "EE",
       "alpha3" : "EST",
@@ -528,7 +528,7 @@
       "latitude" : 59,
       "longitude" : 26
     },
-{
+    {
       "country" : "Ethiopia",
       "alpha2" : "ET",
       "alpha3" : "ETH",
@@ -536,7 +536,7 @@
       "latitude" : 8,
       "longitude" : 38
     },
-{
+    {
       "country" : "Falkland Islands (Malvinas)",
       "alpha2" : "FK",
       "alpha3" : "FLK",
@@ -544,7 +544,7 @@
       "latitude" : -51.75,
       "longitude" : -59
     },
-{
+    {
       "country" : "Faroe Islands",
       "alpha2" : "FO",
       "alpha3" : "FRO",
@@ -552,7 +552,7 @@
       "latitude" : 62,
       "longitude" : -7
     },
-{
+    {
       "country" : "Fiji",
       "alpha2" : "FJ",
       "alpha3" : "FJI",
@@ -560,7 +560,7 @@
       "latitude" : -18,
       "longitude" : 175
     },
-{
+    {
       "country" : "Finland",
       "alpha2" : "FI",
       "alpha3" : "FIN",
