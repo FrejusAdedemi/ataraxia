@@ -5,14 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   let globalIp = "";
 
-  // Fonction d'affichage sécurisée
   const setText = (id, text) => {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
   };
 
-  // Récupération des malwares détectés
-  fetch("http://127.0.0.1:5000/malware")
+  fetch("/malware")
     .then((res) => res.json())
     .then((data) => {
       const body = document.querySelector("#malware-table tbody");
@@ -24,8 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Malware ❌:", err));
 
-  // Récupération des IPs suspectes
-  fetch("http://127.0.0.1:5000/suspicious")
+  fetch("/suspicious")
     .then((res) => res.json())
     .then((data) => {
       const sorted = Object.entries(data).sort(
@@ -40,8 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Suspicious ❌:", err));
 
-  // Récupération de l'accès initial
-  fetch("http://127.0.0.1:5000/init_access")
+  fetch("/init_access")
     .then((res) => res.json())
     .then((data) => {
       if (!data.initial_access || !Array.isArray(data.initial_access)) {
@@ -57,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setText("user", `Utilisateur: ${first.nom_utilisateur}`);
       setText("flag", `Flag: ${data.message}`);
 
-      return fetch(`http://127.0.0.1:5000/private_access/${globalIp}`);
+      return fetch(`/private_access/${globalIp}`);
     })
     .then((res) => res.json())
     .then((data) => {
@@ -82,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body.appendChild(row);
       });
 
-      return fetch(`http://127.0.0.1:5000/public_access/${globalIp}`);
+      return fetch(`/public_access/${globalIp}`);
     })
     .then((res) => res.json())
     .then((data) => {
@@ -124,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const certTable = document.querySelector("#cert-table");
 
-    fetch("http://127.0.0.1:5000/map")
+    fetch("/map")
       .then((res) => res.json())
       .then((data) => {
         let hasAuto = false;
