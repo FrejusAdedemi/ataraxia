@@ -40,7 +40,7 @@ Ataraxia est une application de cybersécurité développée dans le cadre du pr
 1. Clonez le dépôt :
 
    ```bash
-   git clone https://github.com/votre-utilisa/ataraxia.git
+   git clone https://github.com/FrejusAdedemi/ataraxia
    cd ataraxia
    ```
 
