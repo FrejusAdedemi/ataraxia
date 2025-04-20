@@ -1,0 +1,30 @@
+# Environnement virtuel
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# Flask cache / instance
+instance/
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# Pcap / fichiers sensibles
+*.pcap
+pcap/
+*.cap
+
+# Déploiement
+.env
+*.pem

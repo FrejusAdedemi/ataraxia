@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ping.js/0.1.4/ping.min.js"></script>
+</head>
+
+  <body>
+    <header>
+<!--      <img src="logo.png" alt="VyraLock Logo" class="logo">-->
+      <img src="{{ url_for('static', filename='logo.png') }}">
+      <h1>VYRALOCK</h1>
+    </header>
+
+    <section class="cards-container">
+      <div class="card dashboard">
+        <h2>Initial Access</h2>
+        <p>
+          C'est le point d'entrée utilisé pour établir une présence avant
+          d'exécuter d'autres actions malveillantes.
+        </p>
+        <div id="ip" class="info">IP: ...</div>
+        <div id="mac" class="info">MAC: ...</div>
+        <div id="machine" class="info">Nom Machine: ...</div>
+        <div id="user" class="info">Utilisateur: ...</div>
+        <div id="flag" class="info">Flag: ...</div>
+      </div>
+      <div class="card type attack">
+        <h2>Type d'attaques</h2>
+        <table id="attack-table" class="table">
+            <thead>
+              <tr>
+                <th>Attaque(s) utilisée(s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Données insérées ici -->
+            </tbody>
+          </table>
+      </div>
+      <div class="card cert">
+        <h2>Certificats auto-signé</h2>
+        <table id="cert-table" class="table">
+            <thead>
+              <tr>
+                <th>IP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Données insérées ici -->
+            </tbody>
+          </table>
+      </div>
+    </section>
+      <div class="card map">
+        <h2>Connexions par pays</h2>
+        <div id="map" style="height: 400px;"></div>
+      </div>
+    <section class="table-section">
+      <div class="card">
+        <h2>IPs Suspectes(Malicious)</h2>
+        <div id="suspicious-table-container">
+          <table id="suspicious-table" class="table">
+            <thead>
+              <tr>
+                <th>IP</th>
+                <th>État</th>
+                <th>Score de Menace</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Données insérées ici -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Possible Malware Installé</h2>
+        <div id="malware-table-container">
+          <table id="malware-table" class="table">
+            <thead>
+              <tr>
+                <th>IP</th>
+                <th>Malware</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Données insérées ici -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Connexions IP Publiques</h2>
+        <div id="tableaux">
+          <table id="public-tentatives-table" class="table">
+            <thead>
+              <tr>
+                <th>IP Source</th>
+                <th>IP Destination</th>
+                <th>Nombre de Tentatives</th>
+                <th>Ports</th>
+              </tr>
+            </thead>
+            <tbody id="public-tentatives-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Connexions IP Privée</h2>
+        <div id="tableaux">
+          <table id="tentatives-table" class="table">
+            <thead>
+              <tr>
+                <th>IP Source</th>
+                <th>IP Destination</th>
+                <th>Nombre de Tentatives</th>
+                <th>Protocoles</th>
+                <th>Ports</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Donnée insérée ici -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+<!--    <script src="./script.js"></script>-->
+  </body>
+</html>
