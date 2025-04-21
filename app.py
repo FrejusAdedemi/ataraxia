@@ -78,12 +78,13 @@ def map_data():
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
-@app.route("/codeiso/<alpha2>")
-def codeiso(alpha2):
+@app.route("/country/<alpha2>")
+def country(alpha2):
     try:
         return jsonify(get_country_info(alpha2))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/threat_score/<ip>")
 def threat_score_check(ip):
