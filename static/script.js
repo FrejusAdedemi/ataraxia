@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/suspicious")
     .then((res) => res.json())
     .then((data) => {
-      console.log("📡 Données reçues depuis /suspicious :", data); // 👈 ajoute ceci
+        console.log("📡 Données reçues depuis /suspicious :", data);
+        console.log("🧪 Type de données :", typeof data);
+        console.log("🔑 Clés détectées :", Object.keys(data));
 
       const sorted = Object.entries(data).sort(
         (a, b) => b[1].threat_score - a[1].threat_score

@@ -121,13 +121,12 @@ def map2():
 @app.route("/suspicious")
 def suspicious():
     try:
-        data = get_ip_analysis()  # 👈 appel ici AVANT le print
-        print("🕵️ Data retournée par get_ip_analysis :", data)  # ✅ OK maintenant
+        data = get_ip_analysis()
+        print("🕵️ Données analysées :", data)
         return jsonify(data)
     except Exception as e:
-        print("❌ Erreur /suspicious:", traceback.format_exc())
+        print("❌ Erreur dans /suspicious :", e)
         return jsonify({"error": str(e)}), 500
-
 
 @app.route("/malware")
 def malware():
