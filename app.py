@@ -38,7 +38,7 @@ def initial_access():
             "message": "Accès initial détecté"
         })
     except Exception as e:
-        print("❌ Erreur /init_access:", traceback.format_exc())
+        print("❌ Erreur /init_access:", e)
         return jsonify({"error": str(e)}), 500
 
 @app.route("/private_access/<ip_address>")
@@ -69,7 +69,7 @@ def map_data():
         formatted = format_json(data)
         return jsonify(formatted)
     except Exception as e:
-        print("❌ Erreur /map:", traceback.format_exc())
+        print("❌ Erreur /map:", e)
         return jsonify({"error": str(e)}), 500
 
 @app.route("/codeiso/<alpha2>")
@@ -131,6 +131,9 @@ def health():
         "tshark_installed": shutil.which("tshark") is not None,
         "pcap_present": os.path.exists("pcap/ex4.pcap")
     }
+
+import os
+print("📦 pcap présent ?", os.path.exists("pcap/ex4.pcap"))
 
 
 if __name__ == "__main__":
