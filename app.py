@@ -128,6 +128,20 @@ def suspicious():
         print("❌ Erreur dans /suspicious :", e)
         return jsonify({"error": str(e)}), 500
 
+def get_ip_analysis():
+    try:
+        print("🔍 get_ip_analysis() lancé")
+        # vérifie que le fichier existe
+        print("📁 Contenu de /pcap :", os.listdir("./pcap"))
+
+        # ton code d'analyse...
+        return {"test": "valeur"}  # ← temporairement pour tester
+
+    except Exception as e:
+        print("⚠️ Erreur dans get_ip_analysis :", e)
+        return {}
+
+
 @app.route("/malware")
 def malware():
     try:
