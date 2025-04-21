@@ -153,5 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
       certTable.appendChild(row);
     }
   })
-  .catch((err) => console.error("Carte Leaflet ❌:", err));
-
+   .catch((err) => console.error("Carte Leaflet ❌:", err));
+  } else {
+    console.warn("🗺️ Carte Leaflet non affichée (pas de container #map)");
+  }
+}); // <- Fin du DOMContentLoaded
