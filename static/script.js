@@ -120,33 +120,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const certTable = document.querySelector("#cert-table");
 
-    fetch("/map")
-      .then((res) => res.json())
-      .then((data) => {
-        let hasAuto = false;
-        data.data.forEach((entry) => {
-          if (entry.country !== "inconnu") {
-            L.marker([entry.latitude, entry.longitude])
-              .addTo(map)
-              .bindPopup(entry.country);
-          } else {
-            hasAuto = true;
-            entry.ip.forEach((ip) => {
-              const row = document.createElement("tr");
-              row.innerHTML = `<td>${ip}</td>`;
-              certTable.appendChild(row);
-            });
-          }
-        });
+   fetch("/map")
+  .then((res) => res.json())
+  .then((data) => {
+    const certTable = document.querySelector("#cert-table");
+    let hasAuto = false;
 
-        if (!hasAuto) {
+    // data est un objet { "AZ": [ip1, ip2], "TJ": [ip1], ... }
+    Object.entries(data).forEach(([country, ips]) => {
+      // Affichage sur la carte (si tu as des coordonnées associées plus tard)
+      // ici tu peux faire un appel à une API comme https://restcountries.com pour latitude/longitude
+      // Par défaut, on place un marqueur fictif (à adapter)
+      const fakeLatLng = [Math.random() * 140 - 70, Math.random() * 360 - 180];
+      L.marker(fakeLatLng)
+        .addTo(map)
+        .bindPopup(`${country}: ${ips.length} IP(s)`);
+
+      // Gestion des certificats auto-signés
+      if (country === "inconnu") {
+        hasAuto = true;
+        ips.forEach((ip) => {
           const row = document.createElement("tr");
-          row.innerHTML = `<td>Aucun certificat auto-signé</td>`;
+          row.innerHTML = `<td>${ip}</td>`;
           certTable.appendChild(row);
-        }
-      })
-      .catch((err) => console.error("Carte Leaflet ❌:", err));
-  } else {
-    console.warn("🗺️ Carte Leaflet non affichée (pas de container #map)");
-  }
-});
+        });
+      }
+    });
+
+    if (!hasAuto) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>Aucun certificat auto-signé</td>`;
+      certTable.appendChild(row);
+    }
+  })
+  .catch((err) => console.error("Carte Leaflet ❌:", err));
+
