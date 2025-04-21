@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 import json
 import ipaddress
@@ -10,17 +11,24 @@ def is_private_ip(ip):
     except ValueError:
         return False
 
+
 def extract_packets(pcap_file):
+    tshark_path = shutil.which("tshark")
+    if not tshark_path:
+        raise RuntimeError("❌ TShark n'est pas disponible dans l'environnement Docker/production")
+
     command = [
-        r"C:\Program Files\Wireshark\tshark.exe", "-r", pcap_file, "-T", "fields",
+        tshark_path, "-r", pcap_file, "-T", "fields",
         "-e", "ip.src", "-e", "ip.dst", "-e", "ip.proto", "-e", "tcp.port", "-e", "udp.port", "-e", "icmp.type"
     ]
+    print(f"📡 Lancement de TShark avec : {command}")
+
     result = subprocess.run(command, capture_output=True, text=True)
-    
+
     if result.returncode != 0:
-        print("Erreur lors de l'exécution de tshark.")
-        return []
-    
+        print("❌ Erreur TShark :", result.stderr)
+        raise RuntimeError(f"TShark a échoué : {result.stderr}")
+
     return result.stdout.splitlines()
 
 def detect_private_network_scanning(packets, specific_src_ip):

@@ -46,12 +46,15 @@ def initial_access():
 @app.route("/private_access/<ip_address>")
 def private_access(ip_address):
     try:
+        print(f"📥 Analyse des connexions privées pour IP: {ip_address}")
         file_path = download_file()
+        print(f"📁 Fichier utilisé: {file_path}")
         data = analyze_pcap_and_ip(file_path, ip_address)
         return jsonify(data)
     except Exception as e:
         print("❌ Erreur /private_access:", traceback.format_exc())
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/public_access/<ip_address>")
 def public_access_route(ip_address):
