@@ -138,16 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
         continue;
       }
 
-      const res = await fetch(`/country/${country}`);
+      const res = await fetch(`/codeiso/${country}`);
       const countryData = await res.json();
 
       // ✅ Vérifie que les coordonnées existent
-      if (!countryData.latlng || countryData.latlng.length !== 2) {
+
+      if (!countryData || !Array.isArray(countryData.latlng) || countryData.latlng.length !== 2) {
         console.warn(`❌ Coordonnées manquantes pour ${country}`);
         continue;
       }
-
       const [lat, lon] = countryData.latlng;
+
 
 
 

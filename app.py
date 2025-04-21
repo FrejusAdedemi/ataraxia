@@ -102,19 +102,19 @@ def map2():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/country/<code>")
+@app.route("/codeiso/<code>")
 def get_country_latlng(code):
     try:
         response = requests.get(f"https://restcountries.com/v3.1/alpha/{code}")
-        response.raise_for_status()  # pour capturer les erreurs HTTP
+        response.raise_for_status()
         data = response.json()
 
         latlng = data[0].get("latlng", [0, 0])
-        return jsonify({"lat": latlng[0], "lon": latlng[1]})
+        return jsonify({"latlng": latlng})
 
     except Exception as e:
         print(f"❌ Erreur API pays pour {code} :", e)
-        return jsonify({"lat": 0, "lon": 0, "error": str(e)}), 500
+        return jsonify({"error": str(e), "latlng": [0, 0]}), 500
 
 @app.route("/suspicious")
 def suspicious():
