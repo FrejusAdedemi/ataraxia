@@ -25,21 +25,18 @@ def index():
     return render_template("index.html")
 
 @app.route("/init_access")
+@app.route("/init_access")
 def initial_access():
     try:
         pcap_file = download_file()
         data = extract_pcap_info(pcap_file)
-
-        if isinstance(data, str):
-            data = json.loads(data)
-
-        return jsonify({
-            "initial_access": data,
-            "message": "Accès initial détecté"
-        })
+        return jsonify(data)
     except Exception as e:
-        print("❌ Erreur /init_access:", e)
+        import traceback
+        print("🔥 Erreur /init_access :", e)
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/private_access/<ip_address>")
 def private_access(ip_address):
@@ -66,10 +63,11 @@ def map_data():
     try:
         file_path = download_file()
         data = pcap_to_json(file_path)
-        formatted = format_json(data)
-        return jsonify(formatted)
+        return jsonify(data)
     except Exception as e:
-        print("❌ Erreur /map:", e)
+        import traceback
+        print("🔥 Erreur /map :", e)
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 @app.route("/codeiso/<alpha2>")
