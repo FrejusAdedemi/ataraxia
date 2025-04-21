@@ -121,18 +121,13 @@ def map2():
 @app.route("/suspicious")
 def suspicious():
     try:
-        # data = get_ip_analysis()
-        def get_ip_analysis():
-            return {
-                "8.8.8.8": {"state": "malicious", "threat_score": 99.5},
-                "1.1.1.1": {"state": "malicious", "threat_score": 88.3}
-            }
-
-        print("🕵️ Data retournée par get_ip_analysis :", data)  # 👈 Ajoute ceci
+        data = get_ip_analysis()  # 👈 appel ici AVANT le print
+        print("🕵️ Data retournée par get_ip_analysis :", data)  # ✅ OK maintenant
         return jsonify(data)
     except Exception as e:
         print("❌ Erreur /suspicious:", traceback.format_exc())
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/malware")
 def malware():
