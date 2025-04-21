@@ -120,23 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const certTable = document.querySelector("#cert-table");
 
-   fetch("/map")
+  fetch("/map")
   .then((res) => res.json())
-  .then((data) => {
+  .then(async (data) => {
     const certTable = document.querySelector("#cert-table");
     let hasAuto = false;
+    let bounds = [];
 
-    // data est un objet { "AZ": [ip1, ip2], "TJ": [ip1], ... }
-    Object.entries(data).forEach(([country, ips]) => {
-      // Affichage sur la carte (si tu as des coordonnées associées plus tard)
-      // ici tu peux faire un appel à une API comme https://restcountries.com pour latitude/longitude
-      // Par défaut, on place un marqueur fictif (à adapter)
-      const fakeLatLng = [Math.random() * 140 - 70, Math.random() * 360 - 180];
-      L.marker(fakeLatLng)
-        .addTo(map)
-        .bindPopup(`${country}: ${ips.length} IP(s)`);
-
-      // Gestion des certificats auto-signés
+    for (const [country, ips] of Object.entries(data)) {
       if (country === "inconnu") {
         hasAuto = true;
         ips.forEach((ip) => {
@@ -144,17 +135,42 @@ document.addEventListener("DOMContentLoaded", () => {
           row.innerHTML = `<td>${ip}</td>`;
           certTable.appendChild(row);
         });
+        continue;
       }
-    });
+
+      // 🗺️ Récupérer latitude/longitude via REST Countries
+      const res = await fetch(`https://restcountries.com/v3.1/alpha/${country}`);
+      const countryData = await res.json();
+      const [lat, lon] = countryData[0]?.latlng || [0, 0];
+
+      // 🎨 Couleur par niveau (ex: + de 5 IPs = rouge)
+      let color = "green";
+      if (ips.length > 5) color = "orange";
+      if (ips.length > 10) color = "red";
+
+      const circle = L.circleMarker([lat, lon], {
+        radius: 8,
+        color,
+        fillColor: color,
+        fillOpacity: 0.7,
+      })
+        .addTo(map)
+        .bindPopup(`${country} : ${ips.length} IP(s)`);
+
+      bounds.push([lat, lon]);
+    }
 
     if (!hasAuto) {
       const row = document.createElement("tr");
       row.innerHTML = `<td>Aucun certificat auto-signé</td>`;
       certTable.appendChild(row);
     }
+
+    // 📌 Centrer automatiquement la carte sur tous les points
+    if (bounds.length > 0) {
+      map.fitBounds(bounds);
+    }
   })
-   .catch((err) => console.error("Carte Leaflet ❌:", err));
-  } else {
-    console.warn("🗺️ Carte Leaflet non affichée (pas de container #map)");
-  }
-}); // <- Fin du DOMContentLoaded
+  .catch((err) => console.error("Carte Leaflet ❌:", err));
+}
+});
