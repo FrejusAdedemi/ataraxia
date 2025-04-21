@@ -3,7 +3,7 @@ from flask_cors import CORS
 import os
 import json
 import traceback
-
+import requests
 # Modules perso
 from modules.return_file import download_file
 from modules.initial_acces_service import extract_pcap_info, envoyer_donnees_pcap
@@ -100,6 +100,17 @@ def map2():
         return jsonify({"message": "Map générée"})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/country/<code>")
+def get_country_latlng(code):
+    try:
+        response = requests.get(f"https://restcountries.com/v3.1/alpha/{code}")
+        data = response.json()
+        if not data or "latlng" not in data[0]:
+            return jsonify({"latlng": [0, 0]})
+        return jsonify(data[0]["latlng"])
+    except Exception as e:
+        return jsonify({"latlng": [0, 0], "error": str(e)}), 500
 
 @app.route("/suspicious")
 def suspicious():
