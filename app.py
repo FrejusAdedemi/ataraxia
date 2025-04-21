@@ -122,10 +122,12 @@ def map2():
 def suspicious():
     try:
         data = get_ip_analysis()
+        print("🚨 Suspicious data :", data)  # 👈 Ajoute ce log temporaire
         return jsonify(data)
     except Exception as e:
         print("❌ Erreur /suspicious:", traceback.format_exc())
         return jsonify({"error": str(e)}), 500
+
 
 @app.route("/malware")
 def malware():
