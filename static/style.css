@@ -27,11 +27,6 @@ h1 {
   font-size: 2rem;
 }
 
-.danger td { color: red; font-weight: bold; }
-.warning td { color: orange; }
-.safe td { color: green; }
-
-
 /* Cards Container */
 .cards-container {
   display: flex;
