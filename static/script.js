@@ -153,20 +153,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       // 🎨 Couleur par niveau (ex: + de 5 IPs = rouge)
-      let color = "green";
-      if (ips.length > 5) color = "orange";
-      if (ips.length > 10) color = "red";
+      let iconUrl = "https://maps.google.com/mapfiles/ms/icons/green-dot.png";
+        if (ips.length > 5) iconUrl = "https://maps.google.com/mapfiles/ms/icons/orange-dot.png";
+        if (ips.length > 10) iconUrl = "https://maps.google.com/mapfiles/ms/icons/red-dot.png";
 
-      const circle = L.circleMarker([lat, lon], {
-        radius: 8,
-        color,
-        fillColor: color,
-        fillOpacity: 0.7,
-      })
-        .addTo(map)
-        .bindPopup(`${country} : ${ips.length} IP(s)`);
+        const customIcon = L.icon({
+          iconUrl,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -32],
+        });
 
-      bounds.push([lat, lon]);
+        L.marker([lat, lon], { icon: customIcon,  title: `${country} : ${ips.length} IP(s)`
+        })
+          .addTo(map)
+          .bindPopup(`${country} : ${ips.length} IP(s)`);
+
+        bounds.push([lat, lon]);
+
     }
 
     if (!hasAuto) {
