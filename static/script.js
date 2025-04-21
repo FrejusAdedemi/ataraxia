@@ -138,9 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
         continue;
       }
 
-      // 🗺️ Récupérer latitude/longitude
       const res = await fetch(`/country/${country}`);
-      const { lat, lon } = await res.json();
+      const countryData = await res.json();
+
+      // ✅ Vérifie que les coordonnées existent
+      if (!countryData.latlng || countryData.latlng.length !== 2) {
+        console.warn(`❌ Coordonnées manquantes pour ${country}`);
+        continue;
+      }
+
+      const [lat, lon] = countryData.latlng;
+
 
 
       // 🎨 Couleur par niveau (ex: + de 5 IPs = rouge)
