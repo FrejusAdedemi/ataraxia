@@ -123,5 +123,15 @@ def malware_list():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+@app.route("/health")
+def health():
+    import shutil, os
+    return {
+        "status": "ok",
+        "tshark_installed": shutil.which("tshark") is not None,
+        "pcap_present": os.path.exists("pcap/ex4.pcap")
+    }
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
