@@ -95,6 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${entry.nb_tentatives}</td>
           <td>${entry.ports.join(", ")}</td>
         `;
+          row.classList.add(
+          threat_score > 80 ? "danger" :
+          threat_score > 50 ? "warning" :
+          "safe"
+        );
+
         body.appendChild(row);
       });
 
