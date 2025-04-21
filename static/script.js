@@ -140,7 +140,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 🗺️ Récupérer latitude/longitude
       const res = await fetch(`/country/${country}`);
-      const [lat, lon] = await res.json();
+      const { lat, lon } = await res.json();
+
 
       // 🎨 Couleur par niveau (ex: + de 5 IPs = rouge)
       let color = "green";
