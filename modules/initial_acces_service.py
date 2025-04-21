@@ -91,4 +91,4 @@ def extract_pcap_info(pcap_file: str) -> json:
         if not (info["nom_utilisateur"] == "N/A" and info["nom_machine"] == "N/A")
     ]
 
-    return json.dumps(output_list, indent=4)
+    return output_list

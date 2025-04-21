@@ -25,16 +25,21 @@ def index():
     return render_template("index.html")
 
 @app.route("/init_access")
-@app.route("/init_access")
 def initial_access():
     try:
-        pcap_file = download_file()
-        data = extract_pcap_info(pcap_file)
-        return jsonify(data)
+        file_path = download_file()
+        data = extract_pcap_info(file_path)
+
+        # Si extract_pcap_info() retourne une string JSON :
+        if isinstance(data, str):
+            data = json.loads(data)
+
+        return jsonify({
+            "initial_access": data,
+            "message": "🎯 Analyse terminée"
+        })
+
     except Exception as e:
-        import traceback
-        print("🔥 Erreur /init_access :", e)
-        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 
