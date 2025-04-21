@@ -78,6 +78,32 @@ def map_data():
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
+def get_country_info_from_ip(ip):
+    try:
+        if ip.startswith("172."):
+            return {"countryCode": "FR"}
+        elif ip.startswith("91."):
+            return {"countryCode": "DE"}
+        elif ip.startswith("216."):
+            return {"countryCode": "US"}
+        elif ip.startswith("192.241."):
+            return {"countryCode": "NL"}
+        return {"countryCode": None}
+    except:
+        return {"countryCode": None}
+
+@app.route("/map_malicious")
+def map_malicious():
+    suspicious_ips = get_ip_analysis()
+    countries = {}
+    for ip in suspicious_ips:
+        info = get_country_info_from_ip(ip)  # À faire ou mock
+        code = info.get("countryCode")
+        if not code:
+            countries.setdefault("inconnu", []).append(ip)
+            continue
+        countries.setdefault(code, []).append(ip)
+    return jsonify(countries)
 
 @app.route("/codeiso/<alpha2>")
 def codeiso(alpha2):
@@ -85,8 +111,6 @@ def codeiso(alpha2):
         return jsonify(get_country_info(alpha2))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
 
 @app.route("/threat_score/<ip>")
 def threat_score_check(ip):
@@ -104,20 +128,6 @@ def map2():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# @app.route("/codeiso/<code>")
-# def get_country_latlng(code):
-#     try:
-#         response = requests.get(f"https://restcountries.com/v3.1/alpha/{code}")
-#         response.raise_for_status()
-#         data = response.json()
-#
-#         latlng = data[0].get("latlng", [0, 0])
-#         return jsonify({"latlng": latlng})
-#
-#     except Exception as e:
-#         print(f"❌ Erreur API pays pour {code} :", e)
-#         return jsonify({"error": str(e), "latlng": [0, 0]}), 500
-
 @app.route("/suspicious")
 def suspicious():
     try:
@@ -128,19 +138,40 @@ def suspicious():
         print("❌ Erreur dans /suspicious :", e)
         return jsonify({"error": str(e)}), 500
 
+from collections import Counter
+import subprocess
+
 def get_ip_analysis():
     try:
         print("🔍 get_ip_analysis() lancé")
-        # vérifie que le fichier existe
-        print("📁 Contenu de /pcap :", os.listdir("./pcap"))
+        file_path = "./pcap/ex4.pcap"
+        cmd = ["tshark", "-r", file_path, "-T", "fields", "-e", "ip.src", "-e", "ip.dst"]
+        output = subprocess.check_output(cmd, text=True)
 
-        # ton code d'analyse...
-        return {"test": "valeur"}  # ← temporairement pour tester
+        counter = Counter()
+        for line in output.splitlines():
+            parts = line.strip().split("\t")
+            if len(parts) >= 2:
+                counter[parts[0]] += 1
+                counter[parts[1]] += 1
 
+        max_count = max(counter.values(), default=1)
+        results = {}
+        for ip, count in counter.items():
+            if ip.startswith(("224.", "239.", "255.")) or ip == "":
+                continue
+            score = min(int((count / max_count) * 100), 100)
+            if score > 30:  # Seuil
+                results[ip] = {
+                    "state": "malicious",
+                    "threat_score": score
+                }
+
+        print("🕵️ Données analysées :", results)
+        return results
     except Exception as e:
         print("⚠️ Erreur dans get_ip_analysis :", e)
         return {}
-
 
 @app.route("/malware")
 def malware():

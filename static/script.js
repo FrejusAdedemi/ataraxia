@@ -124,6 +124,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const certTable = document.querySelector("#cert-table");
 
+fetch("/map_malicious")
+  .then(res => res.json())
+  .then(async (data) => {
+    let bounds = [];
+
+    for (const [countryCode, ips] of Object.entries(data)) {
+      const res = await fetch(`/codeiso/${countryCode}`);
+      const country = await res.json();
+
+      if (!country.latlng || country.latlng.length !== 2) continue;
+      const [lat, lon] = country.latlng;
+
+      const customIcon = L.icon({
+        iconUrl: "https://maps.google.com/mapfiles/ms/icons/red-dot.png", // 🎯 pour IP malicieuses
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+      });
+
+      L.marker([lat, lon], { icon: customIcon, title: `${countryCode} : ${ips.length} IP(s)` })
+        .addTo(map)
+        .bindPopup(`🔥 IPs suspectes : ${ips.join(", ")}`);
+
+      bounds.push([lat, lon]);
+    }
+
+    if (bounds.length > 0) map.fitBounds(bounds);
+  })
+  .catch(err => console.error("Carte IPs malicieuses ❌", err));
+
   fetch("/map")
   .then((res) => res.json())
   .then(async (data) => {
