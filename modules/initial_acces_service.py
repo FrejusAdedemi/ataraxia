@@ -43,8 +43,12 @@ def extract_pcap_info(pcap_file: str) -> json:
     process = subprocess.Popen(tshark_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
 
-    if stderr:
-        raise RuntimeError(f"Erreur: {stderr.decode()}")
+    stderr_output = stderr.decode()
+    if process.returncode != 0:
+        raise RuntimeError(f"Erreur tshark : {stderr_output}")
+    else:
+        if stderr_output.strip():
+            print("⚠️ Tshark stderr (non bloquant) :", stderr_output.strip())
 
     lines = stdout.decode().splitlines()
     ip_to_info = {}
