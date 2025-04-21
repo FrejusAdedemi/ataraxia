@@ -78,12 +78,14 @@ def map_data():
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
-@app.route("/country/<alpha2>")
-def country(alpha2):
+
+@app.route("/codeiso/<alpha2>")
+def codeiso(alpha2):
     try:
         return jsonify(get_country_info(alpha2))
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 
 @app.route("/threat_score/<ip>")
@@ -102,19 +104,19 @@ def map2():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/codeiso/<code>")
-def get_country_latlng(code):
-    try:
-        response = requests.get(f"https://restcountries.com/v3.1/alpha/{code}")
-        response.raise_for_status()
-        data = response.json()
-
-        latlng = data[0].get("latlng", [0, 0])
-        return jsonify({"latlng": latlng})
-
-    except Exception as e:
-        print(f"❌ Erreur API pays pour {code} :", e)
-        return jsonify({"error": str(e), "latlng": [0, 0]}), 500
+# @app.route("/codeiso/<code>")
+# def get_country_latlng(code):
+#     try:
+#         response = requests.get(f"https://restcountries.com/v3.1/alpha/{code}")
+#         response.raise_for_status()
+#         data = response.json()
+#
+#         latlng = data[0].get("latlng", [0, 0])
+#         return jsonify({"latlng": latlng})
+#
+#     except Exception as e:
+#         print(f"❌ Erreur API pays pour {code} :", e)
+#         return jsonify({"error": str(e), "latlng": [0, 0]}), 500
 
 @app.route("/suspicious")
 def suspicious():
@@ -152,10 +154,6 @@ def health():
         "tshark_installed": shutil.which("tshark") is not None,
         "pcap_present": os.path.exists("pcap/ex4.pcap")
     }
-
-import os
-print("📦 pcap présent ?", os.path.exists("pcap/ex4.pcap"))
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
